@@ -1,0 +1,38 @@
+.inputs{
+    width: 330px;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+}
+.inputs input{
+    height: 30px;
+    padding: 4px;
+    flex: 1;
+    outline: none;
+    border: 2px solid #90909b;
+    border-radius: 5px;
+    background-color: transparent;
+    /* text-align: end; */
+}
+.inputs input:focus{
+    border: 2px solid #2b2bb7;
+}
+.inputs button{
+    padding: 4px;
+    background-color: #90909b;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+.inputs button:hover{
+    cursor: pointer;
+    background-color: #2b2bb7;
+}
+.outputs{
+    margin-top: 20px auto;
+}
+.outputs h3 span{
+    margin-left: 10px;
+}

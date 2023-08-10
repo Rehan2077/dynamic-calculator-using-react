@@ -1,0 +1,14 @@
+nav ul{
+    height: 70px;
+    background: #2b2bb7;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+li{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
