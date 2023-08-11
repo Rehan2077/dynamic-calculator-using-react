@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Calculator.css";
-import History from "./History";
+
 
 const Calculator = () => {
   const [input, setInput] = useState("");
@@ -8,30 +8,30 @@ const Calculator = () => {
   const [inputResult, setInputResult] = useState("");
   const [history, setHistory] = useState([]);
 
-  let nextId = 0;
+  useEffect(() => {
+    if (output) {
+      setHistory((prev) => [...prev, `${input}=${output}`]);
+    }
+  }, [output]);
 
   const calculate = () => {
     if (input !== "") {
       try {
         /* eslint no-eval: 0 */
-        setOutput(eval(input));
+        setOutput(eval(input).toString());
         setInputResult(input);
-        setHistory([
-            ...history,
-            {  id: nextId++, input: {input}, output: {output} }
-          ]);
       } catch (error) {
         alert("Invalid Input!");
-        setHistory([...history, `${input}=${output}`]);
       }
     }
   };
 
+  
+  
   const handleClick = (e) => {
     setInput(e.target.value);
   };
   const handleKey = (e) => {
-    // console.log(e);
     if (e.key === "Enter") {
       calculate();
     }
@@ -51,7 +51,7 @@ const Calculator = () => {
       <div className="outputs">
         <h3>
           Result:
-          {output !== "" && (
+          {output && (
             <span>
               {inputResult} = {output}
             </span>
@@ -60,9 +60,12 @@ const Calculator = () => {
       </div>
       <div className="history">
         <h2>History: </h2>
-        {history.map((item) => {
-          return <History key={item.id} input={item.input} output={item.output} />;
-        })}
+        {
+            history.map((item, key) => {
+                // return <History item={item} key={key} />
+                return <h3 key={key}>{key+1}. {item}</h3>
+            })
+        }
       </div>
     </div>
   );
